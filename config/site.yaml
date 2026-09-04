@@ -11,7 +11,7 @@
 # Site Basic Information
 # =============================================================================
 site:
-  title: 余弦の博客 # 网站名称
+  title: 余弦 # 网站名称
   alternate: cosine # 网站英文名称 用于页脚、Logo、@ handle 等
   subtitle: WA 的一声就哭了 # 网站副标题
   name: cos # 作者名称 - 请修改为你的名字
@@ -133,7 +133,7 @@ featuredSeries:
       你可以用它来发布定期更新的系列内容，如技术周刊、读书笔记系列等。
       设置 enabled: false 可以关闭此功能。
     cover: /img/weekly_header.webp # 系列页面头图
-    enabled: true # 启用此系列
+    enabled: false # 启用此系列
     icon: ri:newspaper-line # 导航图标
     links: # 相关链接（可选）
       github: https://github.com/your-username/your-repo # (可选) GitHub 仓库
@@ -628,9 +628,6 @@ bgm:
     - title: 最爱山山
       list:
         - https://music.163.com/playlist?id=8676645748
-    - title: Love Vocaloid
-      list:
-        - https://music.163.com/playlist?id=8882890045
 
 christmas:
   enabled: false # 总开关
