@@ -6,6 +6,7 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "baseUrl": "src",
+    "ignoreDeprecations": "6.0",
     "paths": {
       "@/*": ["*"],
       "@assets/*": ["assets/*"],
