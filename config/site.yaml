@@ -72,6 +72,8 @@ categoryMap:
   周刊: weekly
   # Secondary categories (for nested paths)
   前端: front-end
+  中文: chinese
+  日语: japanese
   # Add more as needed:
   # 书摘: reading
   # 后端: back-end
@@ -233,24 +235,12 @@ friends:
       desc: FE / ACG / 手工 / 深色模式强迫症 / INFP / 兴趣广泛养两只猫的老宅女 / remote
       image: https://blog.cosine.ren/img/avatar.webp
       color: '#ed788b'
-    - site: 示例博客 A
-      url: https://example-a.com
-      owner: Alice
-      desc: 一个热爱技术的开发者
-      image: https://api.dicebear.com/7.x/avataaars/svg?seed=Alice
-      color: '#BEDCFF'
-    - site: 示例博客 B
-      url: https://example-b.com
-      owner: Bob
-      desc: 分享生活与技术的小站
-      image: https://api.dicebear.com/7.x/avataaars/svg?seed=Bob
-      color: '#FBC1CC'
-    - site: 示例博客 C
-      url: https://example-c.com
-      owner: Carol
-      desc: 记录学习与成长的地方
-      image: https://api.dicebear.com/7.x/avataaars/svg?seed=Carol
-      color: '#ABDCFF'
+    - site: 星海日和
+      url: https://blog.hoshiumi.xyz
+      owner: 跨越星轨的客
+      desc: 一个记录技术、游戏与生活的星海主题个人博客
+      image: https://blog.hoshiumi.xyz/img/avatar.webp
+      color: '#5C7FAF'
 
 # =============================================================================
 # Announcements
