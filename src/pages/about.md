@@ -6,11 +6,11 @@ date: 2025-01-03 01:01:33
 description: "关于我？"
 ---
 
-## 你好，这里是余弦
+## 你好，这里是水鱼
 
-[![github badge](https://img.shields.io/badge/dynamic/json?color=blue&label=Github&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dgithub%26queryKey%3Dyusixian)](https://github.com/yusixian)
+[![github badge](https://img.shields.io/badge/dynamic/json?color=blue&label=Github&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dgithub%26queryKey%3Dyusixian)](https://github.com/lsy-0721)
 
-cosine = 余弦 = cos
+fish = 水鱼 = lsy
 
 愿热情永存，愿热爱不灭，愿生活无憾
 
