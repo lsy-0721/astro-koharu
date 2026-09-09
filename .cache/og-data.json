@@ -14,8 +14,22 @@
     "data": {
       "originUrl": "https://t.me/cosine_front_end",
       "url": "https://t.me/cosine_front_end",
-      "error": "Request timeout"
+      "title": "cosine - 前端人の日常频道",
+      "description": "呜啦！日常碎碎念，偶尔掉落优质前端博文推荐、学习资源等\t网页：https://tg.cosine.ren\t本频道的搜索Bot 来辣 👉 @cosSearchBot\t私聊直接发消息就可以搜索啦～\t🔖tags\t#优质博文 #资源推荐 #博客更新 #碎碎念 #项目更新 #手工 #书摘 #阮一峰的科技周刊 #新动态 图频：Cosine 🎨 Gallery @CosineGallery\t猫片： @cosine_cat\t联系频道主：@cosine_yu",
+      "image": "https://cdn5.telesco.pe/file/ja67r4k473aL3Xe4A7-QORNolsuwYYhJNbXX8Y8cKRw8hjQp0_NGexqBF2FKc9DCJSU6bhs_dLSHuNeP4dtNqXOz1-1tWvJMO8Tojos9sLEVw8bV4Fqn3I0XN399EsfOcIUTA6wb0Sx-bz_ukF7DraL2FWv1thgYPbUnx38hDcv1yg_MRXM6qtwf6mJABvYbPasF0Eu-H78RSrUhqQyo0IylVpTC2gPAHSgeENOWs1TiWAMRLJ4of0cmq2eHIi9zIjpiNot9qjTa6n1CPTVOFqhWczxB_fHSgdLzrlEa8M-V6k5OMC5ej_89otbrOe9Ij74ZrvdEMaG7LtKpbWqXfw.jpg",
+      "logo": "https://telegram.org/img/apple-touch-icon.png"
     },
-    "timestamp": 1788785652775
+    "timestamp": 1788873787917
+  },
+  "https://github.com/metowolf/meting": {
+    "data": {
+      "originUrl": "https://github.com/metowolf/meting",
+      "url": "https://github.com/metowolf/Meting",
+      "title": "GitHub - metowolf/Meting: :cake: Wow, such a powerful music API framework",
+      "description": ":cake: Wow, such a powerful music API framework. Contribute to metowolf/Meting development by creating an account on GitHub.",
+      "image": "https://opengraph.githubassets.com/016b0b6a4c4286ce5c6d5403aecb6862237cd61ba17e55c91193a211bd180975/metowolf/Meting",
+      "logo": "https://github.com/fluidicon.png"
+    },
+    "timestamp": 1788874350824
   }
 }

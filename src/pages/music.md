@@ -17,10 +17,10 @@ description: "我喜欢的音乐"
 ```
 
 {% media audio %}
-- title: 诗岸歌单 山山～全是山山～
+- title: miHoYo
   list:
-    - https://music.163.com/#/playlist?id=8676645748
-- title: 超かぐや姫！
+    - https://y.qq.com/n/ryqq_v2/player
+- title: zenless zone zero
   list:
-    - https://music.163.com/#/album?id=358640968
+    - https://music.163.com/#/playlist?id=14371239826
 {% endmedia %}

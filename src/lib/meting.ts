@@ -32,6 +32,9 @@ const URL_RULES: [RegExp, string, string][] = [
   [/y\.qq\.com.*album\/(\w+)/, 'tencent', 'albumlist'],
   [/y\.qq\.com.*playsquare\/(\w+)/, 'tencent', 'playlist'],
   [/y\.qq\.com.*playlist\/(\w+)/, 'tencent', 'playlist'],
+
+  // KuGou
+  [/t1\.kugou\.com\/([A-Za-z0-9]+)/, 'kugou', 'playlist'],
 ];
 
 /** Parse a music platform URL into server/type/id triple. */
