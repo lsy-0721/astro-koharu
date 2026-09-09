@@ -72,8 +72,8 @@ categoryMap:
   周刊: weekly
   # Secondary categories (for nested paths)
   前端: front-end
-  中文: chinese
-  日语: japanese
+  后端: back-end
+  实习: internship
   # Add more as needed:
   # 书摘: reading
   # 后端: back-end
