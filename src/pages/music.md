@@ -19,8 +19,8 @@ description: "我喜欢的音乐"
 {% media audio %}
 - title: miHoYo
   list:
-    - https://y.qq.com/n/ryqq_v2/player
-- title: zenless zone zero
+    - https://music.163.com/#/my/m/music/playlist?id=18366625500
+- title: soft
   list:
-    - https://music.163.com/#/playlist?id=14371239826
+    - https://music.163.com/#/playlist?id=18068725100
 {% endmedia %}
