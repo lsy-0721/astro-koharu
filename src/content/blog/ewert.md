@@ -7,7 +7,7 @@ excludeFromSummary: false
 math: false
 quiz: false
 date: 2026-09-04 22:46:45
-updated: 2026-09-11 17:08:09
+updated: 2026-09-11 17:11:57
 categories:
   - [前端]
 description: 简单讲述HTML的文件结构以及组成关系
@@ -411,6 +411,7 @@ hr {
     <span>这是第2个span标签</span>
     <span>这是第3个span标签</span>
     <span>这是第4个span标签</span>
+    <hr>
     <span>链接点这里<a href="#">链接</a></span>
 ```
 
