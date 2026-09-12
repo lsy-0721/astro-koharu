@@ -84,17 +84,24 @@ const startYear = siteConfig?.startYear ?? currentYear;
     </div>
 
     <!-- ICP Filing -->
-    {icpConfig && (
-      <div class="text-muted-foreground/80 text-xs">
-        {icpConfig.link ? (
-          <a href={icpConfig.link} target="_blank" rel="noopener noreferrer" class="footer-link font-medium">
-            {icpConfig.text}
-          </a>
-        ) : (
-          <span class="opacity-75">{icpConfig.text}</span>
-        )}
-      </div>
+{icpConfig.length > 0 && (
+  <div class="text-muted-foreground/80 flex flex-wrap items-center justify-center gap-3 text-xs">
+    {icpConfig.map((icp) =>
+      icp.link ? (
+        <a
+          href={icp.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-link font-medium"
+        >
+          {icp.text}
+        </a>
+      ) : (
+        <span class="opacity-75">{icp.text}</span>
+      )
     )}
+  </div>
+)}
 
     <!-- Powered By -->
     <div class="text-muted-foreground/80 flex items-center gap-2 text-xs">

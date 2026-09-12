@@ -25,8 +25,8 @@ export interface SiteBasicConfig {
   breadcrumbHome?: string;
   /** 时区配置 (IANA 格式) @default 'Asia/Shanghai' */
   timezone?: string;
-  /** ICP filing number. Supports plain text or { text, link } format */
-  icp?: string | { text: string; link?: string };
+  /** ICP filing number. Supports plain text, { text, link }, or multiple ICP entries */
+  icp?: string | { text: string; link?: string } | { text: string; link?: string }[];
   /** Enable slug transliteration (converts CJK characters to pinyin/romaji) @default false */
   enableSlugTransliteration?: boolean;
 }

@@ -35,11 +35,21 @@ export { contentConfig, i18nConfig, siteConfig };
 export const socialConfig: SocialConfig = yamlConfig.social ?? {};
 
 // ICP filing config — normalize string shorthand to { text } object
-export const icpConfig: { text: string; link?: string } | undefined = (() => {
+// ICP filing config — normalize string/object/array to an array
+export const icpConfig: { text: string; link?: string }[] = (() => {
   const raw = yamlConfig.site.icp;
-  if (!raw) return undefined;
-  if (typeof raw === 'string') return { text: raw };
-  return raw;
+
+  if (!raw) return [];
+
+  if (typeof raw === 'string') {
+    return [{ text: raw }];
+  }
+
+  if (Array.isArray(raw)) {
+    return raw;
+  }
+
+  return [raw];
 })();
 
 const { title, alternate, subtitle } = siteConfig;
