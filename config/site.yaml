@@ -33,9 +33,6 @@ site:
   icp:                         # ICP 备案号（可自定义链接）
     text: "萌ICP备20260856号"
     link: "https://icp.gov.moe/?keyword=20260856"
-  icp:
-    text: "假ICP备1202641号"
-    link: "https://fakeicp.top/query.lua?number=execute.cc.cd"  
   # Enable slug transliteration (converts CJK characters to pinyin/romaji)
   # Note: enabling this will break existing CJK URLs. Run `pnpm save-slugs` first to save old slugs into frontmatter.link
   # enableSlugTransliteration: true
