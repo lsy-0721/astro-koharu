@@ -1,13 +1,13 @@
 ---
 title: css
-draft: true
-sticky: false
+draft: false
+sticky: true
 tocNumbering: true
 excludeFromSummary: false
 math: false
 quiz: false
 date: 2026-09-13 14:45:22
-updated: 2026-09-13 16:11:30
+updated: 2026-09-13 16:12:26
 categories:
   - [前端]
 description: 如果css是外貌，那HTML早已成为我的心
@@ -111,6 +111,8 @@ h1 {
 
 **HTML = 网页的骨架 🦴**\
 \
+\
+\
 **CSS = 网页的外衣 👕**
 
 以后还会学到 **JavaScript**，可以理解成：
@@ -159,6 +161,7 @@ p {
 3. 外部样式表（External Stylesheet）
 
 **三种导入方式的优先级：**\
+\
 内联样式 > 内部样式表 > 外部样式表
 
 ***
@@ -477,7 +480,9 @@ h3 {
 所以记住：
 
 > **外部：单独的&#x20;**`.css`**&#x20;文件**\
+> \
 > **内部：HTML 里面的&#x20;**`<style>`\
+> \
 > **内联：HTML 标签里面的&#x20;**`style=""`
 
 而在**相同选择器发生冲突**、且没有其他更高优先级因素干扰时，可以先按：
