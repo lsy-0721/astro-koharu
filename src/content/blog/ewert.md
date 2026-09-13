@@ -1,7 +1,7 @@
 ---
 title: HTML
 draft: false
-sticky: false
+sticky: true
 tocNumbering: true
 excludeFromSummary: false
 math: false
