@@ -1,5 +1,4 @@
 ---
-link: 'front-end/css'
 title: css
 draft: false
 sticky: true
@@ -8,10 +7,12 @@ excludeFromSummary: false
 math: false
 quiz: false
 date: 2026-09-13 14:45:22
-updated: 2026-09-13 16:12:26
+updated: 2026-09-13 16:55:00
 categories:
   - [前端]
 description: 如果css是外貌，那HTML早已成为我的心
+cover: img/cover/24.webp
+link: front-end/css
 ---
 # gogogo，出发咯！
 
@@ -114,6 +115,10 @@ h1 {
 \
 \
 \
+\
+\
+\
+\
 **CSS = 网页的外衣 👕**
 
 以后还会学到 **JavaScript**，可以理解成：
@@ -162,6 +167,8 @@ p {
 3. 外部样式表（External Stylesheet）
 
 **三种导入方式的优先级：**\
+\
+\
 \
 内联样式 > 内部样式表 > 外部样式表
 
@@ -482,7 +489,11 @@ h3 {
 
 > **外部：单独的&#x20;**`.css`**&#x20;文件**\
 > \
+> \
+> \
 > **内部：HTML 里面的&#x20;**`<style>`\
+> \
+> \
 > \
 > **内联：HTML 标签里面的&#x20;**`style=""`
 
