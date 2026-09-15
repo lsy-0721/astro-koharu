@@ -7,7 +7,7 @@ excludeFromSummary: false
 math: false
 quiz: false
 date: 2026-09-13 14:45:22
-updated: 2026-09-14 21:16:06
+updated: 2026-09-15 21:38:44
 categories:
   - [前端]
 description: 如果css是外貌，那HTML早已成为我的心
@@ -113,11 +113,8 @@ h1 {
 
 ### 一句话记忆
 
-**HTML = 网页的骨架 🦴**\
-\
-\
-\
-**CSS = 网页的外衣 👕**
+**HTML = 网页的骨架**\
+**CSS = 网页的外衣**
 
 以后还会学到 **JavaScript**，可以理解成：
 
@@ -165,9 +162,6 @@ p {
 3. 外部样式表（External Stylesheet）
 
 **三种导入方式的优先级：**\
-\
-\
-\
 内联样式 > 内部样式表 > 外部样式表
 
 ***
@@ -486,13 +480,7 @@ h3 {
 所以记住：
 
 > **外部：单独的&#x20;**`.css`**&#x20;文件**\
-> \
-> \
-> \
 > **内部：HTML 里面的&#x20;**`<style>`\
-> \
-> \
-> \
 > **内联：HTML 标签里面的&#x20;**`style=""`
 
 而在**相同选择器发生冲突**、且没有其他更高优先级因素干扰时，可以先按：
@@ -1976,8 +1964,1948 @@ line-height
 
 > **width 宽，height 高，background 背景色；**\
 > \
+> \
+> \
 > **font 管字体，line-height 管行高；**\
+> \
+> \
 > \
 > **display 管显示方式。**
 
 代码里，`width + height + background-color + display` 可以看成是在学习“盒子怎么显示”，而 `font + line-height` 是在学习“文字怎么显示”。
+
+***
+
+## CSS 盒子模型
+
+**理解盒子模型是构建网页模型的基础，它能帮助你更精确的控制元素在页面中的位置和大小**
+
+盒子模型相关属性
+
+| 属性名              | 说明                                          |
+| ---------------- | ------------------------------------------- |
+| **内容（Content）**  | 盒子包含的实际内容，比如文本、图片等。                         |
+| **内边距（Padding）** | 围绕在内容的内部，是内容与边框之间的空间。可以使用 `padding` 属性来设置。  |
+| **边框（Border）**   | 围绕在内边距的外部，是盒子的边界。可以使用 `border` 属性来设置。       |
+| **外边距（Margin）**  | 围绕在边框的外部，是盒子与其他元素之间的空间。可以使用 `margin` 属性来设置。 |
+
+***
+
+### 什么是 CSS 盒子模型？
+
+在 CSS 中，我们可以把一个 HTML 元素想象成一个**盒子**。
+
+这个盒子从里面到外面依次是：
+
+```text
+┌───────────────────────────────┐
+│          Margin 外边距         │
+│   ┌───────────────────────┐   │
+│   │     Border 边框        │   │
+│   │  ┌─────────────────┐  │   │
+│   │  │ Padding 内边距   │  │   │
+│   │  │  ┌───────────┐  │  │   │
+│   │  │  │  Content  │  │  │   │
+│   │  │  │   内容     │  │  │   │
+│   │  │  └───────────┘  │  │   │
+│   │  └─────────────────┘  │   │
+│   └───────────────────────┘   │
+└───────────────────────────────┘
+```
+
+简单记：
+
+> **内容 → 内边距 → 边框 → 外边距**
+
+也就是：
+
+```text
+Content → Padding → Border → Margin
+```
+
+***
+
+我们通过这段代码来了解：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css 盒子模型</title>
+    <style>
+        .demo{
+            background-color: lightblue;
+            display: inline-block;
+            border:5px solid darkblue;
+            padding: 20px;
+            margin: 20px;
+        }
+        .border-demo{
+            background-color:yellow;
+            width: 200px;
+            height: 100px;
+            border-style: solid dashed dotted double;
+            border-width: 5px 10px 15px 20px;
+            border-color: red;
+            /* border-left: 5px solid red;
+            border-left-color: aliceblue; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class='demo'>好水好水 如鱼得水</div>
+    <div class="border-demo">这是一个边框示例</div>
+</body>
+</html>
+```
+
+先看第一个盒子 `.demo`
+
+代码：
+
+```css
+.demo{
+    background-color: lightblue;
+    display: inline-block;
+    border: 5px solid darkblue;
+    padding: 20px;
+    margin: 20px;
+}
+```
+
+这里涉及了盒子模型的几个核心属性。
+
+***
+
+### Content：内容
+
+HTML：
+
+```html
+<div class="demo">好水好水 如鱼得水</div>
+```
+
+这里：
+
+```text
+好水好水 如鱼得水
+```
+
+就是盒子的 **Content（内容）**。
+
+也就是：
+
+```text
+┌───────────────┐
+│ 好水好水 如鱼得水 │ ← Content
+└───────────────┘
+```
+
+***
+
+### Padding：内边距
+
+代码：
+
+```css
+padding: 20px;
+```
+
+`padding` 就是**内容和边框之间的距离**。
+
+例如：
+
+```text
+┌──────────────────────┐
+│                      │
+│    ┌────────────┐    │
+│    │   内容      │    │
+│    └────────────┘    │
+│                      │
+└──────────────────────┘
+       ↑
+    padding
+```
+
+你的：
+
+```css
+padding: 20px;
+```
+
+表示：
+
+> 上、右、下、左四个方向的内边距都是 `20px`。
+
+所以：
+
+```text
+padding-top    = 20px
+padding-right  = 20px
+padding-bottom = 20px
+padding-left   = 20px
+```
+
+***
+
+### Border：边框
+
+代码：
+
+```css
+border: 5px solid darkblue;
+```
+
+这里实际上同时设置了三个东西：
+
+```text
+border-width: 5px;
+border-style: solid;
+border-color: darkblue;
+```
+
+也就是：
+
+```css
+border: 边框宽度 边框样式 边框颜色;
+```
+
+所以：
+
+```css
+border: 5px solid darkblue;
+```
+
+可以理解为：
+
+> 边框宽度是 `5px`，样式是实线 `solid`，颜色是深蓝色。
+
+结构就是：
+
+```text
+内容
+ ↓
+padding
+ ↓
+┌─────────────────┐
+│     border      │ ← 5px
+│  ┌───────────┐  │
+│  │   内容     │  │
+│  └───────────┘  │
+└─────────────────┘
+```
+
+***
+
+### Margin：外边距
+
+代码：
+
+```css
+margin: 20px;
+```
+
+`margin` 是**盒子和其他元素之间的距离**。
+
+例如：
+
+```text
+        margin
+    ↓          ↓
+
+  ┌─────────────────┐
+  │      盒子        │
+  └─────────────────┘
+
+        ↑
+      margin
+```
+
+你的代码：
+
+```css
+margin: 20px;
+```
+
+表示：
+
+```text
+上：20px
+右：20px
+下：20px
+左：20px
+```
+
+所以两个盒子之间如果存在 `margin`，就会产生间距。
+
+***
+
+### 把 `.demo` 整个盒子串起来
+
+现在把这几个属性放到一起：
+
+```css
+.demo{
+    background-color: lightblue;
+    display: inline-block;
+    border: 5px solid darkblue;
+    padding: 20px;
+    margin: 20px;
+}
+```
+
+可以理解成：
+
+```text
+              Margin 20px
+        ↓────────────────────↓
+        
+        ┌────────────────────┐
+        │      Border 5px     │
+        │  ┌──────────────┐  │
+        │  │ Padding 20px │  │
+        │  │              │  │
+        │  │  Content     │  │
+        │  │ 好水好水 如鱼得水│  │
+        │  │              │  │
+        │  └──────────────┘  │
+        └────────────────────┘
+```
+
+这就是 CSS **盒子模型**。
+
+***
+
+### `display: inline-block` 又是什么？
+
+代码还有：
+
+```css
+display: inline-block;
+```
+
+这个属性不是盒子模型本身的组成部分，但它会影响盒子的排列方式。
+
+默认情况下：
+
+```html
+<div>盒子1</div>
+<div>盒子2</div>
+```
+
+`div` 是块级元素，通常会：
+
+```text
+┌───────┐
+│ 盒子1 │
+└───────┘
+
+┌───────┐
+│ 盒子2 │
+└───────┘
+```
+
+一行一个。
+
+而：
+
+```css
+display: inline-block;
+```
+
+可以让元素具有类似行内元素的排列特征，同时又保留盒子的宽高、padding、border、margin 等特性。
+
+可以简单理解成：
+
+> **inline-block = 可以像文字一样横向排列，同时又像盒子一样设置尺寸。**
+
+***
+
+### 再看 `.border-demo`
+
+第二个盒子：
+
+```css
+.border-demo{
+    background-color:yellow;
+    width: 200px;
+    height: 100px;
+    border-style: solid dashed dotted double;
+    border-width: 5px 10px 15px 20px;
+    border-color: red;
+}
+```
+
+这个例子主要是用来讲 **Border 的四个方向分别设置**。
+
+***
+
+### `border-style` 四个值
+
+代码：
+
+```css
+border-style: solid dashed dotted double;
+```
+
+四个值分别对应：
+
+```text
+        上
+      solid
+        ↑
+左 double ← 盒子 → 右 dashed
+        ↓
+      dotted
+        下
+```
+
+CSS 四值规则是：
+
+```text
+上 → 右 → 下 → 左
+```
+
+也就是顺时针，所以：
+
+```css
+border-style: solid dashed dotted double;
+```
+
+等价于：
+
+```css
+border-top-style: solid;
+border-right-style: dashed;
+border-bottom-style: dotted;
+border-left-style: double;
+```
+
+也就是：
+
+| 方向 | 样式          |
+| -- | ----------- |
+| 上  | `solid` 实线  |
+| 右  | `dashed` 虚线 |
+| 下  | `dotted` 点线 |
+| 左  | `double` 双线 |
+
+***
+
+### `border-width` 也是一样
+
+代码：
+
+```css
+border-width: 5px 10px 15px 20px;
+```
+
+同样遵循：
+
+> **上 → 右 → 下 → 左**
+
+所以：
+
+```text
+上：5px
+右：10px
+下：15px
+左：20px
+```
+
+等价于：
+
+```css
+border-top-width: 5px;
+border-right-width: 10px;
+border-bottom-width: 15px;
+border-left-width: 20px;
+```
+
+***
+
+### `border-color`
+
+代码：
+
+```css
+border-color: red;
+```
+
+这里只有一个值，表示：
+
+> 四个方向的边框颜色全部都是红色。
+
+所以：
+
+```text
+上：红色
+右：红色
+下：红色
+左：红色
+```
+
+***
+
+这里还有一个非常重要的知识点：
+
+### 盒子的实际大小
+
+第二个盒子：
+
+```css
+width: 200px;
+height: 100px;
+```
+
+同时：
+
+```css
+border-width: 5px 10px 15px 20px;
+```
+
+注意！
+
+默认情况下 CSS 使用：
+
+```css
+box-sizing: content-box;
+```
+
+因此：
+
+```text
+width = 内容宽度
+height = 内容高度
+```
+
+所以 `.border-demo`：
+
+**宽度**
+
+内容：
+
+```text
+200px
+```
+
+左右边框：
+
+```text
+左 20px + 右 10px
+```
+
+实际盒子宽度：
+
+```text
+20 + 200 + 10
+= 230px
+```
+
+**高度**
+
+内容：
+
+```text
+100px
+```
+
+上下边框：
+
+```text
+上 5px + 下 15px
+```
+
+实际盒子高度：
+
+```text
+5 + 100 + 15
+= 120px
+```
+
+所以：
+
+```text
+内容区域：200 × 100
+
+整个盒子：
+宽度 = 230px
+高度 = 120px
+```
+
+***
+
+### 最终总结
+
+这份代码主要涉及 **6 个知识点**：
+
+**① Content 内容**
+
+```html
+<div>好水好水 如鱼得水</div>
+```
+
+盒子里面真正显示的内容。
+
+**② Padding 内边距**
+
+```css
+padding: 20px;
+```
+
+**内容 ↔ 边框**之间的距离。
+
+**③ Border 边框**
+
+```css
+border: 5px solid darkblue;
+```
+
+盒子的边界。
+
+**④ Margin 外边距**
+
+```css
+margin: 20px;
+```
+
+**盒子 ↔ 其他元素**之间的距离。
+
+**⑤ Border 四值写法**
+
+```css
+border-width: 5px 10px 15px 20px;
+```
+
+记住：
+
+> **上右下左（顺时针）**
+
+**⑥&#x20;**`width`**&#x20;/&#x20;**`height`
+
+```css
+width: 200px;
+height: 100px;
+```
+
+默认 `content-box` 下，设置的是**内容区域的大小**，不是整个盒子的最终大小。
+
+***
+
+### ⭐ 最后记一个公式
+
+在默认 `content-box` 下：
+
+**元素实际宽度：**
+
+```text
+width
++ padding-left
++ padding-right
++ border-left
++ border-right
+```
+
+**元素实际高度：**
+
+```text
+height
++ padding-top
++ padding-bottom
++ border-top
++ border-bottom
+```
+
+而 `margin` **不算进盒子本身的尺寸**，但会影响它与其他元素之间的距离。
+
+一句话记忆：
+
+> **Content 是内容，Padding 撑开内部空间，Border 是边界，Margin 推开外部元素。**
+
+***
+
+## 传统网页布局方式
+
+在学习浮动之前，先了解传统的网页布局方式
+
+网页布局方式有以下五种：
+
+* 标准流（普通流、文档流）：网页按照元素的书写顺序依次排列
+
+* 浮动
+
+* 定位
+
+* `Flexbox` 和 `Grid`（自适应布局）
+
+`标准流` 是由块级元素和行内元素按照默认规定的方式来排列，块级就是占一行，行内元素一行放好多个元素。
+
+***
+
+### 浮动
+
+元素脱离文档流，根据开发者的意愿漂浮到网页的任意方向。
+
+`浮动` 属性用于创建浮动框，将其移动到一边，直到左边缘或右边缘触及包含块或另一个浮动框的边缘，这样即可使得元素进行浮动。
+
+**语法：**
+
+```text
+选择器 {
+    float: left/right/none;
+}
+```
+
+**注意：** 浮动是相对于父元素浮动，只会在父元素的内部移动。
+
+***
+
+#### 浮动的三大特性
+
+学习浮动要先了解浮动的三大特性：
+
+* **脱标：** 脱离标准流。
+
+* **一行显示，顶部对齐**
+
+* **具备行内块元素特性**
+
+***
+
+代码部分如下：
+
+```text
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动</title>
+    <style>
+        .father{
+            border: 5px solid darkblue;
+            /* height: 200px; */
+            background-color: lightblue;
+            /* overflow: hidden; */
+        }
+        .father::after{
+            content: '';
+            display: table;
+            clear: both;
+        }
+        .left-son{
+            float: left;
+            width: 200px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+        .right-son{
+            float: right;
+            width: 200px;
+            height: 100px;
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="left-son">左浮动</div>
+        <div class="right-son">右浮动</div>
+    </div>
+    <p>不要因为饥饿就去吃垃圾食品，不要因为贫穷就乱选工作，不要因为寂寞就随便牵手，不要因为任何匮乏而降低标准，这个世界上选择无限。数千个擦肩而过，你选择谁，谁就和你有缘分，纵然没有甲，也终究会有乙。</p>
+</body>
+</html>
+```
+
+这份代码主要就是通过一个**父盒子&#x20;**`.father`**&#x20;+ 左右两个子盒子**来演示 CSS 浮动，以及浮动之后的**脱标、排列和清除浮动**。
+
+***
+
+#### 先看 HTML 结构
+
+```html
+<div class="father">
+    <div class="left-son">左浮动</div>
+    <div class="right-son">右浮动</div>
+</div>
+
+<p>不要因为饥饿就去吃垃圾食品……</p>
+```
+
+可以把它理解成：
+
+```text
+父盒子 father
+│
+├── 左盒子 left-son
+│
+└── 右盒子 right-son
+
+下面还有一个 p 段落
+```
+
+其中 `.father` 是**父元素**，两个 `.son` 是它的**子元素**。
+
+***
+
+#### 什么是浮动？
+
+代码中最关键的就是：
+
+```css
+.left-son {
+    float: left;
+}
+
+.right-son {
+    float: right;
+}
+```
+
+`float` 就是**浮动属性**。
+
+基本语法：
+
+```css
+选择器 {
+    float: left;
+}
+```
+
+常见取值：
+
+```css
+float: left;   /* 左浮动 */
+float: right;  /* 右浮动 */
+float: none;   /* 不浮动 */
+```
+
+***
+
+#### 左浮动和右浮动
+
+代码中：
+
+```css
+.left-son {
+    float: left;
+}
+```
+
+表示：
+
+> `.left-son` 向父元素的左侧浮动。
+
+而：
+
+```css
+.right-son {
+    float: right;
+}
+```
+
+表示：
+
+> `.right-son` 向父元素的右侧浮动。
+
+所以最终效果大致是：
+
+```text
+┌──────────────────────────────┐
+│┌────────┐              ┌────────┐│
+││ 左浮动 │              │ 右浮动 ││
+│└────────┘              └────────┘│
+└──────────────────────────────┘
+```
+
+这就是浮动非常典型的使用方式：**让原本上下排列的块级元素出现在同一行。**
+
+***
+
+#### 脱离标准流：浮动的第一个特点
+
+这是学习浮动最重要的知识。
+
+正常情况下：
+
+```html
+<div>盒子1</div>
+<div>盒子2</div>
+```
+
+两个 `div` 都是块级元素，所以会：
+
+```text
+盒子1
+盒子2
+```
+
+也就是**一个占一行**。
+
+但是加上：
+
+```css
+div {
+    float: left;
+}
+```
+
+之后：
+
+```text
+盒子1  盒子2
+```
+
+因为浮动元素会**脱离标准流**。
+
+你可以简单理解为：
+
+> **原来按照正常顺序排队，现在浮起来了，不再按照普通标准流占据原来的位置。**
+
+***
+
+#### 一行显示：浮动的第二个特点
+
+这份代码特别适合说明这一点。
+
+左盒子：
+
+```css
+width: 200px;
+height: 100px;
+float: left;
+```
+
+右盒子：
+
+```css
+width: 200px;
+height: 100px;
+float: right;
+```
+
+两个盒子虽然都是 `div`，本来应该一上一下：
+
+```text
+左浮动
+右浮动
+```
+
+但是浮动以后：
+
+```text
+左浮动                         右浮动
+```
+
+出现在同一行。
+
+因此可以记住：
+
+> **浮动元素可以在一行中排列。**
+
+***
+
+#### 顶部对齐：浮动的第三个特点
+
+如果多个元素都浮动，它们会尽量在同一行排列，并且**顶部对齐**。
+
+例如：
+
+```css
+.box1 {
+    float: left;
+}
+
+.box2 {
+    float: left;
+}
+```
+
+效果类似：
+
+```text
+┌───────┐ ┌───────┐
+│ box1  │ │ box2  │
+│       │ │       │
+│       │ └───────┘
+│       │
+└───────┘
+```
+
+它们会从上方开始排列。
+
+***
+
+#### 浮动后的元素具有“行内块”的特点
+
+浮动元素还有一个非常重要的特点：
+
+> **浮动元素具有类似行内块元素的特性。**
+
+比如代码中：
+
+```css
+.left-son {
+    float: left;
+    width: 200px;
+    height: 100px;
+}
+```
+
+虽然 `.left-son` 是：
+
+```html
+<div>
+```
+
+而 `div` 本来是**块级元素**，但是浮动之后，它可以和其他浮动元素在一行排列，同时还可以设置：
+
+```css
+width
+height
+```
+
+所以可以简单记：
+
+```text
+块级元素
+   ↓
+设置 float
+   ↓
+脱离标准流
+   ↓
+可以一行排列
+   ↓
+具有行内块元素的一些特点
+```
+
+***
+
+#### 为什么父盒子要清除浮动？
+
+这是这份代码里面非常值得重点学习的地方。
+
+父盒子：
+
+```css
+.father {
+    border: 5px solid darkblue;
+    background-color: lightblue;
+}
+```
+
+但是这里没有设置：
+
+```css
+height
+```
+
+而两个子元素全部浮动了：
+
+```css
+.left-son {
+    float: left;
+}
+
+.right-son {
+    float: right;
+}
+```
+
+这时候就可能出现一个经典问题：
+
+> **父元素高度塌陷。**
+
+因为子元素已经脱离标准流，父元素在计算高度的时候，可能无法正常根据浮动子元素撑开。
+
+可以理解成：
+
+```text
+父盒子
+┌──────────────────────┐
+│                      │
+└──────────────────────┘
+ ↑
+父盒子不知道浮动子元素占了多高
+```
+
+***
+
+#### 清除浮动
+
+这份代码使用的是：
+
+```css
+.father::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+```
+
+这是一个非常经典的**伪元素清除浮动**方法。
+
+逐个看：
+
+##### ① `::after`
+
+```css
+.father::after
+```
+
+表示给 `.father` 添加一个**最后面的伪元素**。
+
+***
+
+##### **②&#x20;**`content`
+
+```css
+content: '';
+```
+
+伪元素通常需要 `content` 才能生成。
+
+这里生成一个空内容：
+
+```css
+content: '';
+```
+
+***
+
+##### ③ `display: table`
+
+```css
+display: table;
+```
+
+让这个伪元素形成合适的布局特性。
+
+***
+
+##### **④&#x20;**`clear: both`
+
+最关键的是：
+
+```css
+clear: both;
+```
+
+意思是：
+
+> **清除左右两边的浮动影响。**
+
+其中：
+
+```css
+clear: left;
+```
+
+清除左浮动。
+
+```css
+clear: right;
+```
+
+清除右浮动。
+
+```css
+clear: both;
+```
+
+**同时清除左、右浮动。**
+
+所以：
+
+```css
+.father::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+```
+
+可以理解为：
+
+> **在父盒子的最后面增加一个元素，把左右浮动清除掉，从而让父盒子能够正确包住浮动的子元素。**
+
+***
+
+#### **代码里还有两种被注释掉的方法**
+
+代码中还有：
+
+```css
+/* height: 200px; */
+```
+
+以及：
+
+```css
+/* overflow: hidden; */
+```
+
+这份代码实际上也在展示**解决浮动带来的父元素高度问题的其他方式**。
+
+##### **方法一：给父元素固定高度**
+
+```css
+.father {
+    height: 200px;
+}
+```
+
+这样父盒子自己有高度。
+
+但是这种方式不够灵活，因为如果里面的内容高度发生变化，就可能出现问题。
+
+***
+
+##### **方法二：**`overflow: hidden`
+
+```css
+.father {
+    overflow: hidden;
+}
+```
+
+也可以帮助父元素处理内部浮动带来的高度问题。
+
+***
+
+##### **方法三：伪元素清除浮动**
+
+当前代码采用的是：
+
+```css
+.father::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+```
+
+这也是非常常见的一种写法。
+
+***
+
+#### 最后的 `<p>` 是用来观察什么的？
+
+代码最后还有：
+
+```html
+<p>
+    不要因为饥饿就去吃垃圾食品……
+</p>
+```
+
+这个段落可以帮助我们观察：
+
+> **浮动元素会对后面的标准流元素产生影响。**
+
+因为浮动元素脱离标准流以后，后面的普通内容可能会出现**环绕浮动元素**的效果。
+
+这也是为什么以前做网页的时候，经常使用：
+
+```text
+左边：图片
+右边：文字
+```
+
+例如：
+
+```text
+┌──────────┐  这是一段文字，这是一段文字
+│          │  这是一段文字，这是一段文字
+│   图片   │  这是一段文字，这是一段文字
+│          │  这是一段文字
+└──────────┘  这是一段文字
+```
+
+这就是浮动非常经典的应用场景。
+
+***
+
+#### 把这份代码总结成一张知识图
+
+```text
+                 CSS 浮动 float
+                       │
+          ┌────────────┼────────────┐
+          ↓            ↓            ↓
+       float:left   float:right   float:none
+          │            │
+          └──────┬─────┘
+                 ↓
+            元素脱离标准流
+                 │
+        ┌────────┼────────┐
+        ↓        ↓        ↓
+     一行显示   顶部对齐   类似行内块
+                 │
+                 ↓
+          父元素高度塌陷问题
+                 │
+        ┌────────┼────────┐
+        ↓        ↓        ↓
+     固定高度  overflow  清除浮动
+                         │
+                         ↓
+                  clear: both
+```
+
+**这份代码最核心的三个知识点就是：**
+
+1. `float: left/right` —— **让元素浮动**
+
+2. 浮动元素 —— **脱离标准流，可以一行排列**
+
+3. 浮动带来的父元素高度问题 —— **使用&#x20;**`clear: both`**&#x20;等方式清除浮动**。
+
+***
+
+### 定位
+
+定位布局可以精准定位，但缺乏灵活性
+
+**定位方式：**
+
+* **相对定位**：相对于元素在文档流中的正常位置进行定位。
+
+* **绝对定位**：相对于其最近的已定位祖先元素进行定位，不占据文档流。
+
+* **固定定位**：相对于浏览器窗口进行定位，不占据文档流，固定在屏幕上的位置，不随滚动而移动。
+
+***
+
+这个代码主要演示了 CSS 定位中的三种方式：**相对定位、绝对定位、固定定位**。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位</title>
+    <style>
+        .box1{
+            height: 350px;
+            background-color: lightblue;
+        }
+        .box-normal{
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+        .box-relative{
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+            position: relative;
+            top: 50px;
+            left: 50px;
+        }
+        .box2{
+            height: 350px;
+            background-color: lightblue;
+            margin-bottom: 20px;
+        }
+        .box-absolute{
+            width: 100px;
+            height: 100px;
+            background-color: lightyellow;
+            position: absolute;
+            left: 120px;
+        }
+        .box-fixed{
+            width: 100px;
+            height: 100px;
+            background-color: lightgray;
+            position: fixed;
+            top:300px;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>相对定位</h1>
+    <div class="box1">
+        <div class="box-normal"></div>
+        <div class="box-relative"></div>
+        <div class="box-normal"></div>
+    </div>
+    <h1>绝对定位</h1>
+    <div class="box2">
+        <div class="box-normal"></div>
+        <div class="box-absolute"></div>
+        <div class="box-normal"></div>
+    </div>
+    <h1>固定定位</h1>
+    <div class="box-fixed"></div>
+</body>
+
+</html>
+```
+
+***
+
+#### 什么是定位？
+
+CSS 中的 `position` 就是用来控制元素的**定位方式**。
+
+代码里分别用了：
+
+```css
+position: relative;
+```
+
+```css
+position: absolute;
+```
+
+```css
+position: fixed;
+```
+
+它们最大的区别可以先记成：
+
+| 定位              | 参照物        | 是否脱离文档流 |
+| --------------- | ---------- | ------- |
+| `relative` 相对定位 | 自己原来的位置    | ❌ 不脱离   |
+| `absolute` 绝对定位 | 最近的已定位祖先元素 | ✅ 脱离    |
+| `fixed` 固定定位    | 浏览器窗口      | ✅ 脱离    |
+
+***
+
+#### 相对定位 `relative`
+
+看代码：
+
+```css
+.box-relative{
+    width: 100px;
+    height: 100px;
+    background-color: lightcoral;
+    position: relative;
+    top: 50px;
+    left: 50px;
+}
+```
+
+这里最重要的是：
+
+```css
+position: relative;
+```
+
+表示这个元素采用**相对定位**。
+
+同时：
+
+```css
+top: 50px;
+left: 50px;
+```
+
+表示：
+
+* `top: 50px` → 向下移动 50px
+
+* `left: 50px` → 向右移动 50px
+
+所以可以简单理解为：
+
+> **先按照正常位置摆放，再从自己的原位置进行移动。**
+
+***
+
+#### 为什么叫“相对”？
+
+HTML：
+
+```html
+<div class="box1">
+    <div class="box-normal"></div>
+    <div class="box-relative"></div>
+    <div class="box-normal"></div>
+</div>
+```
+
+正常情况下三个盒子会依次排列：
+
+```text
+┌───────────────────────┐
+│ □                     │
+│                       │
+│ □                     │
+│                       │
+│ □                     │
+└───────────────────────┘
+```
+
+第二个盒子：
+
+```css
+position: relative;
+top: 50px;
+left: 50px;
+```
+
+移动以后：
+
+```text
+┌───────────────────────┐
+│ □                     │
+│                       │
+│   □                   │
+│                       │
+│ □                     │
+└───────────────────────┘
+```
+
+**关键点：它原来的位置依然保留。**
+
+所以第三个盒子不会因为第二个盒子移动了，就跑到第二个盒子原来的位置。
+
+这就是相对定位最大的特点：
+
+> **移动了，但是原来的位置还占着。**
+
+***
+
+#### `top`、`left` 到底是什么？
+
+定位经常会搭配这几个属性：
+
+```css
+top
+bottom
+left
+right
+```
+
+例如：
+
+```css
+top: 50px;
+```
+
+表示：
+
+> 距离原定位位置的上方偏移 50px，也就是**向下移动 50px**。
+
+```css
+left: 50px;
+```
+
+表示：
+
+> 向右移动 50px。
+
+可以这样记：
+
+```text
+top: 50px
+   ↓
+   元素向下
+
+left: 50px
+   →
+   元素向右
+```
+
+反过来：
+
+```css
+top: -50px;
+```
+
+就是向上移动。
+
+```css
+left: -50px;
+```
+
+就是向左移动。
+
+***
+
+#### 绝对定位 `absolute`
+
+再看代码：
+
+```css
+.box-absolute{
+    width: 100px;
+    height: 100px;
+    background-color: lightyellow;
+    position: absolute;
+    left: 120px;
+}
+```
+
+这里：
+
+```css
+position: absolute;
+```
+
+就是**绝对定位**。
+
+绝对定位和相对定位最大的区别：
+
+> **绝对定位会脱离正常文档流。**
+
+***
+
+#### 什么叫脱离文档流？
+
+这里有：
+
+```html
+<div class="box-normal"></div>
+<div class="box-absolute"></div>
+<div class="box-normal"></div>
+```
+
+如果没有定位：
+
+```text
+□
+□
+□
+```
+
+三个盒子正常排列。
+
+但是第二个盒子：
+
+```css
+position: absolute;
+```
+
+以后，它就相当于：
+
+> “我不参与普通排队了。”
+
+所以后面的元素会按照正常文档流继续排列。
+
+可以粗略理解成：
+
+```text
+正常文档流：
+
+□
+□
+□
+
+
+绝对定位：
+
+□
+
+□
+
+      □ ← 绝对定位元素
+```
+
+因此绝对定位元素可以**压在其他元素上面**。
+
+***
+
+#### 绝对定位到底相对于谁？
+
+这是绝对定位最重要的知识点之一。
+
+代码：
+
+```css
+.box-absolute{
+    position: absolute;
+    left: 120px;
+}
+```
+
+那么这个元素的 `left: 120px` **到底是相对于谁？**
+
+答案：
+
+> **相对于最近的“已定位祖先元素”。**
+
+例如：
+
+```html
+<div class="father">
+    <div class="son"></div>
+</div>
+```
+
+如果：
+
+```css
+.father {
+    position: relative;
+}
+
+.son {
+    position: absolute;
+    left: 20px;
+}
+```
+
+那么：
+
+```text
+father
+┌─────────────────────────┐
+│  son                    │
+│  □                      │
+└─────────────────────────┘
+← 20px →
+```
+
+`.son` 会相对于 `.father` 定位。
+
+***
+
+#### 值得注意的地方
+
+`.box2`：
+
+```css
+.box2{
+    height: 350px;
+    background-color: lightblue;
+    margin-bottom: 20px;
+}
+```
+
+它**没有设置**：
+
+```css
+position: relative;
+```
+
+所以 `.box-absolute` 找不到一个合适的已定位父元素时，会继续向上寻找。
+
+代码中：
+
+```html
+<div class="box2">
+    <div class="box-normal"></div>
+    <div class="box-absolute"></div>
+    <div class="box-normal"></div>
+</div>
+```
+
+这正好可以用来理解为什么实际开发中经常写：
+
+```css
+.box2 {
+    position: relative;
+}
+```
+
+然后：
+
+```css
+.box-absolute {
+    position: absolute;
+    left: 120px;
+}
+```
+
+意思就是：
+
+> `.box2` 作为定位父级，`.box-absolute` 在 `.box2` 内部进行绝对定位。
+
+这也是非常常见的 CSS 写法。
+
+***
+
+#### 固定定位 `fixed`
+
+最后看代码：
+
+```css
+.box-fixed{
+    width: 100px;
+    height: 100px;
+    background-color: lightgray;
+    position: fixed;
+    top:300px;
+    right: 0;
+}
+```
+
+这里：
+
+```css
+position: fixed;
+```
+
+就是**固定定位**。
+
+它最大的特点：
+
+> **相对于浏览器窗口进行定位。**
+
+***
+
+##### `top: 300px`
+
+```css
+top: 300px;
+```
+
+表示：
+
+> 距离浏览器窗口顶部 300px。
+
+***
+
+##### `right: 0`
+
+```css
+right: 0;
+```
+
+表示：
+
+> 紧贴浏览器窗口右边。
+
+所以最终效果大概是：
+
+```text
+浏览器窗口
+┌──────────────────────────────┐
+│                              │
+│                              │
+│                              │
+│                              │
+│                         ┌────┤
+│                         │ □  │ ← right: 0
+│                         │    │
+│                         └────┤
+│                              │
+│                              │
+└──────────────────────────────┘
+              ↑
+         top: 300px
+```
+
+***
+
+#### 固定定位为什么经常用于网站按钮？
+
+例如网站右下角经常有：
+
+```text
+┌──────────────────────────┐
+│                          │
+│        网页内容          │
+│                          │
+│                          │
+│                    ┌───┐ │
+│                    │ ↑ │ │
+│                    └───┘ │
+└──────────────────────────┘
+```
+
+这个“返回顶部”按钮就很适合：
+
+```css
+position: fixed;
+right: 20px;
+bottom: 20px;
+```
+
+这样不管页面滚到哪里：
+
+> **按钮始终固定在浏览器窗口右下角。**
+
+代码中的 `.box-fixed` 就是在演示这个效果。
+
+***
+
+#### 三种定位放在一起对比
+
+可以把这个文件记成一句话：
+
+##### ① 相对定位
+
+```css
+position: relative;
+top: 50px;
+left: 50px;
+```
+
+**相对于自己原来的位置移动。**
+
+```text
+原位置 □
+       ↘
+        □
+```
+
+而且：
+
+**原来的位置仍然保留。**
+
+***
+
+##### ② 绝对定位
+
+```css
+position: absolute;
+left: 120px;
+```
+
+**相对于最近的已定位祖先元素定位。**
+
+并且：
+
+**脱离正常文档流。**
+
+***
+
+##### ③ 固定定位
+
+```css
+position: fixed;
+top: 300px;
+right: 0;
+```
+
+**相对于浏览器窗口定位。**
+
+并且：
+
+**脱离正常文档流，滚动页面时仍然固定在窗口的位置。**
+
+***
+
+#### 最重要的记忆口诀
+
+你可以直接记这个：
+
+> **relative：自己动，原位留。**\
+> **absolute：找父级，脱离流。**\
+> **fixed：盯窗口，固定住。**
+
+还有一个非常重要的搭配：
+
+```css
+父元素 {
+    position: relative;
+}
+
+子元素 {
+    position: absolute;
+}
+```
+
+这套组合在实际网页开发中**非常常见**，比如图片上的文字、卡片角标、按钮、图标等。
