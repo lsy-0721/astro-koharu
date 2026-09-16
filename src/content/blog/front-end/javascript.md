@@ -1,4 +1,5 @@
 ---
+link: 'front-end/javascript'
 title: JavaScript
 draft: false
 sticky: true
