@@ -1,5 +1,5 @@
 ---
-link: 'front-end/javascript'
+link: front-end/javascript
 title: JavaScript
 draft: false
 sticky: true
@@ -8,7 +8,7 @@ excludeFromSummary: false
 math: false
 quiz: false
 date: 2026-09-16 14:28:32
-updated: 2026-09-16 19:07:36
+updated: 2026-09-16 20:50:11
 categories:
   - [前端]
 description: JavaScript与Java就像两条平行线，永不相交
@@ -107,7 +107,11 @@ console.log('Hello,外联样式');
 
 > **HTML：负责网页的结构**\
 > \
+> \
+> \
 > **CSS：负责网页的样式**\
+> \
+> \
 > \
 > **JavaScript：负责网页的行为和交互**
 
@@ -1668,3 +1672,16 @@ while (循环条件) {
 * break 用于跳出循环，结束循环的执行。
 
 * continue 用于跳过当前循环中的剩余代码，继续下一次循环。
+
+***
+
+## JavaScript 函数
+
+`函数` 是一段可重复使用的代码块，它接受输入（参数）、执行特定任务，并返回输出。
+
+```javascript
+1 function function_name(参数1, 参数2, 参数3, ...) { // 参数可以不写，表示不传参
+2     // 函数体，执行这里的代码
+3     return 返回值; // 可选，返回值
+4 }
+```
