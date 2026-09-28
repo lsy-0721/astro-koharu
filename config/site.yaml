@@ -11,10 +11,10 @@
 # Site Basic Information
 # =============================================================================
 site:
-  title: 水鱼 # 网站名称
-  alternate: fish # 网站英文名称 用于页脚、Logo、@ handle 等
+  title: 鱼裕の博客 # 网站名称
+  alternate: yuyu # 网站英文名称 用于页脚、Logo、@ handle 等
   subtitle: 好水好水 如鱼得水 # 网站副标题
-  name: lsy # 作者名称 - 请修改为你的名字
+  name: 水鱼 # 作者名称 - 请修改为你的名字
   description: 这个世界虽然广大,但只有你懂我的敏感纤细 # 网站pnpm 描述
   avatar: /img/avatar.webp # 网站头像
   showLogo: true # 是否显示 Logo
